@@ -1,0 +1,8 @@
+.icon{
+    text-align: center;
+    transition: transform 1.1s linear;
+}
+
+.icon:hover{
+    transform: rotate(360deg);
+}
