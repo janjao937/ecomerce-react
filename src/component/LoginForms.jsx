@@ -5,11 +5,12 @@ import accessToken from "../utilities/localStorage";
 import ButtonHover from "./ButtonHover";
 import {toast } from 'react-toastify';
 import { useEffect } from "react";
+import useAuthContext from "../customHook/useAuthContex";
 
 
 const LoginForms = ()=>{
    
-    const [authUser,setAuthUser] = useState(null);
+    // const [authUser,setAuthUser] = useState(null);
 
     const [loginInput,setLoginInput] = useState({
         userName:"",
@@ -28,18 +29,21 @@ const LoginForms = ()=>{
     //     }
         
     // },[]);
-
+    const {login} = useAuthContext();
     const OnsubmitFormHandler=async(e)=>{
         try{
             e.preventDefault();
-            const userLogin = await myAxios.post("/auth/login",{
-                userName:loginInput.userName,
-                password:loginInput.password
-            });
+            // const userLogin = await myAxios.post("/auth/login",{
+            //     userName:loginInput.userName,
+            //     password:loginInput.password
+            // });
             
-            accessToken.addAccessToken(userLogin.data.accessToken);
-            console.log(userLogin)
-            toast.success("Success");
+            // accessToken.addAccessToken(userLogin.data.accessToken);
+            // console.log(userLogin)
+            // toast.success("Success");
+            const userLogin =  await login(loginInput);
+            console.log(userLogin);
+            toast.success(userLogin.userName);
 
         }catch(error){
            

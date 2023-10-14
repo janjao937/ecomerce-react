@@ -29,7 +29,7 @@ const Navbar =()=>{
       <span>FAVORIT</span>
       <span>GAME</span>
       <span>CART</span>
-      <span>ORDER</span>
+      <span>PROFILE</span>
       </div>
      
     </div>
