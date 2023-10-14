@@ -1,49 +1,29 @@
 import { useState } from "react";
 import "../UiStyles/LoginForm.scss";
-import myAxios from "../config/myAxios";
-import accessToken from "../utilities/localStorage";
 import ButtonHover from "./ButtonHover";
 import {toast } from 'react-toastify';
-import { useEffect } from "react";
-import useAuthContext from "../customHook/useAuthContex";
+import useAuthContext from "../customHook/useAuthContext";
 
 
 const LoginForms = ()=>{
    
-    // const [authUser,setAuthUser] = useState(null);
-
     const [loginInput,setLoginInput] = useState({
         userName:"",
         password:""
     });
-    // useEffect(()=>{
-
-    //     if(accessToken.getAccessToken()){
-    //          //catch ไม่ต้องมีเพราะดักที่ 401 ที่ axios.js แล้ว
-    //     myAxios.get("/auth/me").then(res=>{
-            
-            
-    //         setAuthUser(res.data.customer||res.data.supplier);
-
-    //     });
-    //     }
-        
-    // },[]);
     const {login} = useAuthContext();
     const OnsubmitFormHandler=async(e)=>{
         try{
             e.preventDefault();
-            // const userLogin = await myAxios.post("/auth/login",{
-            //     userName:loginInput.userName,
-            //     password:loginInput.password
-            // });
-            
-            // accessToken.addAccessToken(userLogin.data.accessToken);
-            // console.log(userLogin)
-            // toast.success("Success");
             const userLogin =  await login(loginInput);
             console.log(userLogin);
-            toast.success(userLogin.userName);
+            if(userLogin.shopName){
+                toast.success(userLogin.shopName);//Supplier
+            }
+            else{
+                toast.success(userLogin.userName);//Customer
+            }
+            
 
         }catch(error){
            

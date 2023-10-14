@@ -9,6 +9,19 @@ const AuthContext = createContext();
 const AuthContextProvider = ({children})=>{
 
     const [authUser,setAuthUser] = useState(null);
+    useEffect(()=>{
+
+        if(accessToken.getAccessToken())
+        {
+        myAxios.get("/auth/user").then(res=>{
+            console.log(res.data.user)
+            setAuthUser(res.data.user);
+        });
+    
+        }
+       
+        
+    },[]);
 
     const login = async(loginInput)=>{
         try{        
@@ -17,8 +30,9 @@ const AuthContextProvider = ({children})=>{
             password:loginInput.password
         });
         accessToken.addAccessToken(res.data.accessToken);
-
         const userData = res.data.customer||res.data.supplier;//form back
+        // console.log(userData)
+    //    console.log(res.data);
         setAuthUser(userData);
         return userData;
         //toast
@@ -31,6 +45,7 @@ const AuthContextProvider = ({children})=>{
     }
     const register =(registerInput)=>{
 
+        console.log(authUser)
     }
     const logout = ()=>{
         accessToken.removeAccessToken();
