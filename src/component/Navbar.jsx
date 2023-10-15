@@ -1,8 +1,12 @@
 import "../App.scss";
 import "../UiStyles/Dropdown.scss";
 import "../UiStyles/navbar.scss";
+import useCartContext from "../customHook/usecartContext";
 
 const Navbar =()=>{
+
+    const ctx = useCartContext();
+
     return(<div className="bar">
     <div className="bar-container">
     

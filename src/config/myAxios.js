@@ -1,6 +1,7 @@
 import axios from "axios";
 import {BACKEND_URL} from "./env"
 import accessToken from "../utilities/localStorage";
+import {toast } from 'react-toastify';
 
 const myAxios = axios;
 myAxios.defaults.baseURL = BACKEND_URL;
@@ -15,6 +16,16 @@ myAxios.interceptors.request.use((config)=>{
 
 },(error)=>{
     console.log(error);
+    toast.error(error.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
 });
 
 myAxios.interceptors.request.use((response)=>response,(err)=>{

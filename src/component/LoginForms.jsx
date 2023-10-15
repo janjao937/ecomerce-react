@@ -26,8 +26,6 @@ const LoginForms = ()=>{
             
 
         }catch(error){
-           
-            console.dir(error);
             toast.error(error.message, {
                 position: "top-right",
                 autoClose: 5000,

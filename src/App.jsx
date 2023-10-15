@@ -6,7 +6,7 @@ import LoginForms from "./component/LoginForms";
 import Popup from "./component/UseToast";
 import Route from "./router/Route";
 import RegisterForm from "./component/RegisterForm";
-import "./UiStyles/main.scss";
+import "./App.scss";
 import AuthContextProvider from "./context/AuthContext";
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
 
    <AuthContextProvider>
    <Route/>
-  
    </AuthContextProvider>
 
     </Popup>

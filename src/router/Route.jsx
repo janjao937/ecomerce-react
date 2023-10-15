@@ -1,10 +1,12 @@
 import { RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../page/Layout";
+import LayoutCustomer from "../page/LayoutCutomer";
 import LoginPage from "../page/LoginPage";
 import RegisterPage from "../page/RegisterPage";
 import Authenticated from "../features/Authenticated";
 import RedirectIfAuthenticated from "../features/RedirectIfAuthenticated";
+import CustomerHomePage from "../page/CustomerHomePage";
+import Cart from "../component/Cart";
 
 const router = createBrowserRouter([
     {path:"/register",element:(<RegisterPage/>)},
@@ -17,16 +19,29 @@ const router = createBrowserRouter([
         path:"/",
         element:(
         <Authenticated>
-            <Layout/>
+            <LayoutCustomer/>
         </Authenticated>
         
         ),
         children:[
-            {path:"",element:(<div>Home</div>)},
-            {path:"/supplier",element:(<div>Home supplier</div>)},
+            {path:"",element:(<CustomerHomePage/>)},
+            {path:"/cart",element:(<Cart/>)},
 
         ]
-    }
+    },
+    // {
+    //     path:"/supplier",
+    //     element:(
+    //     <Authenticated>
+    //         <LayoutCustomer/>
+    //     </Authenticated>
+        
+    //     ),
+    //     children:[
+    //         {path:"",element:(<div>Home Supplier</div>)},
+
+    //     ]
+    // }
 ]);
 
 const PageRoute =()=>{

@@ -1,0 +1,27 @@
+.Header-Text{
+    text-align: center;
+    font-size: 80px;
+}
+.CartItem-Container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: start;
+    align-items: center;
+    background-color: sandybrown;
+    margin: 20px;
+    border: 1px solid;
+
+    .CartItem-Container-R{
+
+        display: flex;
+        gap:10px ;
+        height: 100%;
+        justify-content: end ;
+       
+    }
+    .CartItem-Container-L{
+        display: flex;
+        justify-content: start;
+    }
+}

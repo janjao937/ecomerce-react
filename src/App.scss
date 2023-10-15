@@ -2,6 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: monospace;
 }
 
 $test-color : salmon;
@@ -21,6 +22,7 @@ $bar-bar-color : sandybrown;
         gap: 20px;
         padding-top: 25px;
         align-items: center;
+        
     }
 
     .bar-item{
@@ -29,6 +31,13 @@ $bar-bar-color : sandybrown;
         height: 1.5rem;
         justify-content: center;
         align-items: center;
+
+        p{
+            cursor: pointer;
+        }
+        span{
+            cursor: pointer;
+        }
     }
 }
 
