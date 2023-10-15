@@ -7,22 +7,13 @@ import ButtonHover from "./ButtonHover";
 // { id:"1",shopName:"abc",name:"Head Phone1",category:"Tech",title:"this phone",price:100,img:"./IMG/headPhone.jpg"},
 const ProductItem = ({productItem}) =>{
 
-    const {cartItems,setCartItems} = useCartContext();
+    const {cartItems,setCartItems,AddProduct} = useCartContext();
 
 
     const addButtonHandler = () =>{
         console.log("add");
-        
-        // if(productItem.quantity){
-        //     cartItems[].quantity++;
-        //     setCartItems([...cartItems,productItem]);
-        // }
-        // else{
-        //     productItem.quantity = 1;
-        // }
-
-        
-        setCartItems([...cartItems,productItem]);
+        // setCartItems([...cartItems,productItem]);
+        AddProduct(productItem);
         console.log(cartItems);
     }
 

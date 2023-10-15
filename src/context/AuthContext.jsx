@@ -43,17 +43,34 @@ const AuthContextProvider = ({children})=>{
             //dont for get create try cathch from interceptor 401 axios
         }
     }
-    const register =(registerInput)=>{
 
-        console.log(authUser)
+    const registerCustomer =async(registerInput)=>{
+        console.log(registerInput);
+        const res = await myAxios.post("/auth/register/customer",{
+                firstName:registerInput.firstName,
+                lastName:registerInput.lastName,
+                userName:registerInput.userName,
+                password:registerInput.password,
+                email:registerInput.email,
+                mobile:registerInput.mobile
+        });//ใส่ obj ได้เพราะตั้งชื่อตัวแปรในObjเหมือนbackend      
+        accessToken.addAccessToken(res.data.accessToken);
+        const userData = res.data.customer||res.data.supplier;
+        setAuthUser(userData);
+        console.log(authUser);
     }
+    const registerSupplier =(registerInput) =>{
+
+    }
+
+
     const logout = ()=>{
         accessToken.removeAccessToken();
         setAuthUser(null);
     }
 
     return (
-        <AuthContext.Provider value={{authUser,register,login,logout}}>
+        <AuthContext.Provider value={{registerCustomer,registerSupplier,authUser,login,logout}}>
             {children}
         </AuthContext.Provider>
     )

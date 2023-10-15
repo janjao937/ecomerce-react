@@ -28,9 +28,9 @@ const Cart = ()=>{
         <div >
             <h1 className="Header-Text">Cart</h1>
             {
-                FillterCartItem().map(e=>{
-                    const quantity = CountQuantity(e.id);
-                    return <CartItem key={e.id} product={e} quantity={quantity}/>
+                cartItems.map(e=>{
+                    // const quantity = CountQuantity(e.id);
+                    return <CartItem key={e.id} product={e} quantity={e.quantity}/>
                 })
                 
             }

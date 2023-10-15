@@ -9,7 +9,12 @@ import CustomerHomePage from "../page/CustomerHomePage";
 import Cart from "../component/Cart";
 
 const router = createBrowserRouter([
-    {path:"/register",element:(<RegisterPage/>)},
+    {path:"/register",element:(
+        <RedirectIfAuthenticated>
+            <RegisterPage/>
+        </RedirectIfAuthenticated>
+    )},
+
     {path:"/login",element:(
         <RedirectIfAuthenticated>
             <LoginPage/>
