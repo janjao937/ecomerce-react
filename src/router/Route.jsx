@@ -7,8 +7,13 @@ import Authenticated from "../features/Authenticated";
 import RedirectIfAuthenticated from "../features/RedirectIfAuthenticated";
 import CustomerHomePage from "../page/CustomerHomePage";
 import Cart from "../component/Cart";
+import SupplierHomePage from "../page/SupplierHomePage";
+import GamePage from "../page/GamePage";
 
 const router = createBrowserRouter([
+    {path:"/game",element:(
+        <GamePage/>
+    )},
     {path:"/register",element:(
         <RedirectIfAuthenticated>
             <RegisterPage/>
@@ -34,19 +39,19 @@ const router = createBrowserRouter([
 
         ]
     },
-    // {
-    //     path:"/supplier",
-    //     element:(
-    //     <Authenticated>
-    //         <LayoutCustomer/>
-    //     </Authenticated>
+    {
+        path:"/supplier",
+        element:(
+        <Authenticated>
+            <LayoutCustomer/>
+        </Authenticated>
         
-    //     ),
-    //     children:[
-    //         {path:"",element:(<div>Home Supplier</div>)},
+        ),
+        children:[
+            {path:"",element:(<SupplierHomePage/>)},
 
-    //     ]
-    // }
+        ]
+    }
 ]);
 
 const PageRoute =()=>{
