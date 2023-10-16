@@ -1,34 +1,67 @@
 import "../UiStyles/RegisterForm.scss";
 import useAuthContext from "../customHook/useAuthContext";
 import ButtonHover from "./ButtonHover";
+import {useForm} from "react-hook-form";
 
 
 const SupplierRegisterForm = () => {
   const {registerSupplier}= useAuthContext();
-  const [input,setInput]=useState({
-    firstName:"",
-    lastName:"",
-    userName:"",
-    password:"",
-    shopName:"",
-    email:"",
-    mobile:""
-});
+  const {register,handleSubmit,errors} = useForm();
+
+
+const OnSubmitForm = (data)=>{
+    console.log(data);
+    registerSupplier(data).catch(err=>console.log(err));
+  }
+
   return (
     <div className="Container">
         <h1 className="RegisterHeader">Register Supplier</h1>
-      <form className="RegisterForm">
-        <input type="text" placeholder="First name" />
-        <input type="text" placeholder="Last name" />
-        <input type="text" placeholder="username" />
-        <input type="password" placeholder="password" />
-        <input type="password" placeholder="Shop name" />
-        <input type="text" placeholder="email" />
-        <input type="text" placeholder="mobile"/>
-        <ButtonHover background="green" height="60px" type="submit" text="Register"/>
+     <form onSubmit={handleSubmit(OnSubmitForm)} className="RegisterForm">
+        <input type="text" name="firstName" placeholder="firstName" {...register("firstName",{required:true})} />
+        <input type="text" name="lastName" placeholder="Lastname" {...register("lastName",{required:true})}/>
+        <input type="text" name="userName"  placeholder="username" {...register("userName",{required:true})}/>
+        <input type="password" name="password" placeholder="password" {...register("password",{required:true})}/>
+        <input type="email" name="email" placeholder="email" {...register("email",{required:true})}/>
+        <input type="text" name="shopName" placeholder="shopName" {...register("shopName",{required:true})}/>
+        <input type="text" name="mobile" placeholder="mobile" {...register("mobile",{required:true})}/>
+        <ButtonHover background="green" height="60px" type="submit" text="Register"/> 
       </form>
     </div>
   );
 };
 
 export default SupplierRegisterForm;
+
+// import "../UiStyles/RegisterForm.scss";
+// import useAuthContext from "../customHook/useAuthContext";
+// import ButtonHover from "./ButtonHover";
+// import {useForm} from "react-hook-form";
+
+
+// const RegisterForm = () => {
+//   const {registerCustomer}= useAuthContext();//get register function
+//   const {register,handleSubmit,errors} = useForm();
+
+// const OnSubmitForm = (data)=>{
+//     console.log(data);
+//     registerCustomer(data).catch(err=>console.log(err));
+// }
+
+//   return (
+//     <div className="Container">
+//         <h1 className="RegisterHeader">Register Customer</h1>
+//       <form onSubmit={handleSubmit(OnSubmitForm)} className="RegisterForm">
+//         <input type="text" name="firstName" placeholder="firstName" {...register("firstName",{required:true})} />
+//         <input type="text" name="lastName" placeholder="Lastname" {...register("lastName",{required:true})}/>
+//         <input type="text" name="userName"  placeholder="username" {...register("userName",{required:true})}/>
+//         <input type="password" name="password" placeholder="password" {...register("password",{required:true})}/>
+//         <input type="email" name="email" placeholder="email" {...register("email",{required:true})}/>
+//         <input type="text" name="mobile" placeholder="mobile" {...register("mobile",{required:true})}/>
+//         <ButtonHover background="green" height="60px" type="submit" text="Register"/> 
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default RegisterForm;

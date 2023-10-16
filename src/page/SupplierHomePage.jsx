@@ -1,8 +1,13 @@
 const SupplierHomePage =()=>{
 
-    return(<div>
-        Supplier HomePage
-    </div>)
+    return(
+    <div>
+        <p>Supplier HomePage</p>
+        <div className="supplier-container">
+            
+        </div>
+    </div>
+    )
 }
 
 export default SupplierHomePage;

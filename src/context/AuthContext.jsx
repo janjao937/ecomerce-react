@@ -59,7 +59,21 @@ const AuthContextProvider = ({children})=>{
         setAuthUser(userData);
         console.log(authUser);
     }
-    const registerSupplier =(registerInput) =>{
+    const registerSupplier =async(registerInput) =>{
+        console.log(registerInput);
+        const res = await myAxios.post("/auth/register/supplier",{
+                firstName:registerInput.firstName,
+                lastName:registerInput.lastName,
+                userName:registerInput.userName,
+                password:registerInput.password, 
+                shopName:registerInput.shopName, 
+                email:registerInput.email,
+                mobile:registerInput.mobile
+        });//ใส่ obj ได้เพราะตั้งชื่อตัวแปรในObjเหมือนbackend      
+        accessToken.addAccessToken(res.data.accessToken);
+        const userData = res.data.customer||res.data.supplier;
+        setAuthUser(userData);
+        console.log(userData);
 
     }
 

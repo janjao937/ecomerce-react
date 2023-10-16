@@ -3,6 +3,7 @@ import "../UiStyles/LoginForm.scss";
 import ButtonHover from "./ButtonHover";
 import {toast } from 'react-toastify';
 import useAuthContext from "../customHook/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const LoginForms = ()=>{
@@ -11,6 +12,7 @@ const LoginForms = ()=>{
         userName:"",
         password:""
     });
+    const navigate = useNavigate();
     const {login} = useAuthContext();
     const OnsubmitFormHandler=async(e)=>{
         try{
@@ -54,7 +56,7 @@ const LoginForms = ()=>{
 
             <div className="button-container">
             <ButtonHover type="submit" text="Login"/>
-            <ButtonHover onClick={()=>"Hello"} color="white" background="black" text="Register"/>
+            <ButtonHover onClick={()=>navigate("/register")} color="white" background="black" text="Register"/>
             </div>
         </form>
        

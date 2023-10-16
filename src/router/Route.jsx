@@ -9,6 +9,7 @@ import CustomerHomePage from "../page/CustomerHomePage";
 import Cart from "../component/Cart";
 import SupplierHomePage from "../page/SupplierHomePage";
 import GamePage from "../page/GamePage";
+import SupplierRegisterForm from "../component/SupplierRegisterForm";
 
 const router = createBrowserRouter([
     {path:"/game",element:(
@@ -19,7 +20,6 @@ const router = createBrowserRouter([
             <RegisterPage/>
         </RedirectIfAuthenticated>
     )},
-
     {path:"/login",element:(
         <RedirectIfAuthenticated>
             <LoginPage/>

@@ -10,7 +10,7 @@ const CustomerHomePage = ()=>{
     const navigete = useNavigate();
     
     const onCartClickHandler = () =>{
-        navigete("/cart")
+        navigete("/cart");
     }
 
 

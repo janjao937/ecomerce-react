@@ -1,22 +1,12 @@
 import "../UiStyles/RegisterForm.scss";
 import useAuthContext from "../customHook/useAuthContext";
 import ButtonHover from "./ButtonHover";
-import { useState } from "react";
 import {useForm} from "react-hook-form";
 
 
 const RegisterForm = () => {
   const {registerCustomer}= useAuthContext();//get register function
   const {register,handleSubmit,errors} = useForm();
-
-  const [input,setInput]=useState({
-    firstName:"",
-    lastName:"",
-    userName:"",
-    password:"",
-    email:"",
-    mobile:""
-});
 
 const OnSubmitForm = (data)=>{
     console.log(data);
