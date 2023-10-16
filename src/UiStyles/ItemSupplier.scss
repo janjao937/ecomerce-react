@@ -1,0 +1,44 @@
+.item-Container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    justify-content: space-around;
+    align-items: center;
+    margin:20px 0;
+    height: 500px;
+    // height: 50px;
+
+    button{
+        height: 50px;
+    }
+    .delete-button{
+        background-color: red;
+        cursor: pointer;
+    }
+    .delete-button:hover{
+        background-color: rgb(187, 4, 4);
+    }
+    .save-button{
+        background-color: rgb(8, 227, 8);
+        cursor: pointer;
+    }
+    .save-button:hover{
+        background-color: rgb(5, 139, 5);
+    }
+    .edit{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        // padding-left:320px;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+    }
+}
+
+.button-Container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}

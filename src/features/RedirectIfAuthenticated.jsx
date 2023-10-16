@@ -4,6 +4,7 @@ import useAuthContext from "../customHook/useAuthContext";
 
 const RedirectIfAuthenticated = ({children})=>{
     const {authUser} = useAuthContext();
+    console.log(authUser);
     if(authUser?.shopName){
         return <Navigate to="/supplier"/>
     }

@@ -25,6 +25,20 @@ const router = createBrowserRouter([
             <LoginPage/>
         </RedirectIfAuthenticated>
     )},
+
+    {
+        path:"/supplier",
+        element:(
+        <Authenticated>
+            <LayoutCustomer/>
+        </Authenticated>
+        
+        ),
+        children:[
+            {path:"",element:(<SupplierHomePage/>)},
+
+        ]
+    },
     {
         path:"/",
         element:(
@@ -36,19 +50,6 @@ const router = createBrowserRouter([
         children:[
             {path:"",element:(<CustomerHomePage/>)},
             {path:"/cart",element:(<Cart/>)},
-
-        ]
-    },
-    {
-        path:"/supplier",
-        element:(
-        <Authenticated>
-            <LayoutCustomer/>
-        </Authenticated>
-        
-        ),
-        children:[
-            {path:"",element:(<SupplierHomePage/>)},
 
         ]
     }
