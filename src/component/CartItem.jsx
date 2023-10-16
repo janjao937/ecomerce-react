@@ -1,6 +1,9 @@
 import "../UiStyles/CartItem.scss";
+import useCartContext from "../customHook/usecartContext";
 
 const CartItem = ({product,quantity=1})=>{
+    const {AddProduct,RemoveProduct} = useCartContext();
+
     return(
     <div className="CartItem-Container">
       
@@ -13,9 +16,9 @@ const CartItem = ({product,quantity=1})=>{
         <h3>{product.name}</h3>
         {/* <h3>Price:{product.price}</h3> */}
         <h3>total Price:{quantity*product.price}</h3>
-        <button>+</button>
+        <button onClick={()=>AddProduct(product)}>+</button>
             {quantity}
-        <button>-</button>
+        <button onClick={()=>RemoveProduct(product)} >-</button>
        
         </div>
         
