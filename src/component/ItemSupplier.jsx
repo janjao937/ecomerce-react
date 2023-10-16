@@ -19,7 +19,7 @@ const ItemSupplier = ({product})=>{
 
             <div className="edit">
             <p>image</p>
-
+            {isEdit&&<button>upload</button>}
             </div>
             <div className="edit">
             <p>title</p>

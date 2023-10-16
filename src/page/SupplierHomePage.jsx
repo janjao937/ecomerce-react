@@ -10,8 +10,8 @@ const SupplierHomePage =()=>{
         <h1 style={{textAlign:"center",margin:"30px 0"}}>Supplier HomePage</h1>
         <div className="function">
             {/* <h1>Add item</h1> */}
-            <ButtonHover text="Add" background="green"/>
-            <ButtonHover text="Delete" background="red"/>
+            <ButtonHover width="500px" text="Add Product" background="green"/>
+            {/* <ButtonHover text="Delete" background="red"/> */}
         </div>
 
         <div className="supplier-container">
