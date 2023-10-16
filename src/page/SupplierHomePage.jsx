@@ -6,8 +6,8 @@ import "../UiStyles/SupplierHomePage.scss";
 const SupplierHomePage =()=>{
 
     return(
-    <div>
-        <h1 style={{textAlign:"center",margin:"30px 0"}}>Supplier HomePage</h1>
+    <div className="bg">
+        <h1 style={{textAlign:"center",padding:"30px 0"}}>Supplier HomePage</h1>
         <div className="function">
             {/* <h1>Add item</h1> */}
             <ButtonHover width="500px" text="Add Product" background="green"/>

@@ -1,7 +1,14 @@
-.supplier-container{
-    display: flex;
-    flex-direction: column;
-}  
+
+.bg{
+    background-color: rgb(255, 225, 0);
+    .supplier-container{
+        display: flex;
+        flex-direction: column;
+       
+    } 
+
+}
+ 
 .function{
     display: flex;
     justify-content: space-around;
