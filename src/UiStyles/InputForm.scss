@@ -1,0 +1,25 @@
+.inputForm{
+    display: flex;
+    gap: 8px;
+    // height: 50px;
+    justify-content: start;
+    margin:20px 0;
+    img{
+        height: 100px;
+        width: 100px;
+        cursor: pointer;
+    }
+}
+.buttonForm-container{
+    display: flex;
+    margin-top: 100px;
+    // justify-content: space-around;
+    gap: 5rem;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

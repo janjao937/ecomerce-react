@@ -43,3 +43,24 @@
     align-items: center;
     gap: 40px;
 }
+
+
+.itemSupplier-container{
+    display: flex;
+    background-color: rgb(243, 155, 145);
+    border: 1px solid;
+    height: 8em;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 10px;
+    button{
+        border: 2px solid;
+        background-color: orange;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: rgb(151, 100, 5);
+    }
+
+}
