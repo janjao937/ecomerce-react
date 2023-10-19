@@ -35,7 +35,11 @@ const router = createBrowserRouter([
         
         ),
         children:[
-            {path:"",element:(<SupplierHomePage/>)},
+            {path:"",element:(
+                
+            <SupplierHomePage/>
+
+            )},
 
         ]
     },

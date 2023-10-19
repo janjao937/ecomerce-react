@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "../UiStyles/ProductItem.scss";
 import useCartContext from "../customHook/usecartContext";
 import ButtonHover from "./ButtonHover";
+import {BACKEND_URL} from "../config/env";
 
 
 // { id:"1",shopName:"abc",name:"Head Phone1",category:"Tech",title:"this phone",price:100,img:"./IMG/headPhone.jpg"},
@@ -20,7 +21,7 @@ const ProductItem = ({productItem}) =>{
     return(
         <div className="prooductItem">
             {/* {productItem.id} */}
-            <img src={productItem.img} width="300px" height="250px"  alt="" />
+            <img src={`${BACKEND_URL}/${productItem.img}`}  width="300px" height="250px"  alt="" />
            
             <div className="prooductItem-text">
                 

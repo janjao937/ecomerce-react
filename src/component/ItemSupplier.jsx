@@ -1,24 +1,41 @@
 import { useState } from "react";
 import "../UiStyles/ItemSupplier.scss";
+import myAxios from "../config/myAxios";
 // import ButtonHover from "./ButtonHover";
+import {BACKEND_URL} from "../config/env";
 
+const ItemSupplier = ({product,OnEdit})=>{
+    // const [isEdit,setEdit] = useState(false);
+    // const OnEditHandler = ()=>{
+    //     setEdit(!isEdit);
+    // }
+    // const OnSaveHandler = ()=>{
+    //     setEdit(!isEdit);
+    // }
 
-const ItemSupplier = ({product})=>{
-    const [isEdit,setEdit] = useState(false);
-    const OnEditHandler = ()=>{
-        setEdit(!isEdit);
-    }
-    const OnSaveHandler = ()=>{
-        setEdit(!isEdit);
-    }
    //Edit Delete Add
+   const OnDelete = async()=>{
+     try{
+       await myAxios.delete(`/product/remove/${product.id}`);
+      //  console.log(res);
+      window.location.reload(false);//refesh Page
+
+    } 
+    catch(error){
+      console.log(error);
+    }
+
+   }
 
     return(
       <div className="itemSupplier-container">
-        <img src={product.img} alt="" width="150px" height="100px" />
+        <img src={BACKEND_URL+"/"+product.img} alt="" width="150px" height="100px" />
+        {/* {console.log(BACKEND_URL+product.img)} */}
         <h1>{product.name}</h1>
         <h1>Price:{product.price}</h1>
-        <button>Edit</button>
+        <h1>amount:{product.amount}</h1>
+        <button onClick={()=> OnEdit()}>Edit</button>
+        <button onClick={()=>OnDelete()}>Delete</button>
       </div>
     )
 }

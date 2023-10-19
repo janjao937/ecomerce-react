@@ -8,6 +8,7 @@ import Route from "./router/Route";
 import RegisterForm from "./component/RegisterForm";
 import "./App.scss";
 import AuthContextProvider from "./context/AuthContext";
+import ProductContextProvider from "./context/ProductContext";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
     <LoginForms/>  */}
 
    <AuthContextProvider>
-   <Route/>
+    <ProductContextProvider>
+        <Route/>
+
+    </ProductContextProvider>
    </AuthContextProvider>
 
     </Popup>
