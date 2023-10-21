@@ -1,6 +1,6 @@
-const EditProductForms = ({OnCloseEditHandler,inputForm,setInputForm,file,setFile})=>{
-
-
+// import { useState } from "react";
+// import {BACKEND_URL} from "../config/env";
+const EditProductForms = ({OnCloseEditHandler,inputForm,setInputForm,file,setFile,OnSave})=>{
     return(
         <form className="form-container">
         <div className="inputForm">
@@ -21,19 +21,19 @@ const EditProductForms = ({OnCloseEditHandler,inputForm,setInputForm,file,setFil
         </div>
         <div className="inputForm">
           {
-              file?(<img src={URL.createObjectURL(file)} alt={URL.createObjectURL(file)} /> ):(
+              file?(<img src={URL.createObjectURL(file)} alt={URL.createObjectURL(file)} />):""          
+          }
               <input type="file" onChange={(e)=>{
                   if(e.target.files[0]){
                       setFile(e.target.files[0]);
                   }
-              }} />)
-          }
-      
+              }} />
+
         </div>
 
         <div className="buttonForm-container">
         {/* onClick={} */}
-          <button  type="submit">save</button>
+          <button onClick={OnSave} type="submit">save</button>
           <button onClick={OnCloseEditHandler} type="button">cancle</button>
         </div>
       </form>

@@ -5,7 +5,7 @@ import ProductItem from "../component/ProductItem";
 import "../UiStyles/ProductItem.scss";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import useProductContext from "../customHook/useProductContext";
+import useProductContext from "../customHook/useProductCustomerContext";
 
 
 const CustomerHomePage = ()=>{

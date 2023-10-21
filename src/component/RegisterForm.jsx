@@ -21,6 +21,9 @@ const OnSubmitForm = (data)=>{
         <input type="text" name="lastName" placeholder="Lastname" {...register("lastName",{required:true})}/>
         <input type="text" name="userName"  placeholder="username" {...register("userName",{required:true})}/>
         <input type="password" name="password" placeholder="password" {...register("password",{required:true})}/>
+
+        {/* <input type="password" name="confirmPassword" placeholder="confirmPassword" {...register("confirmPassword",{required:true,validate:value => value === password.current || "The passwords do not match"})}/> */}
+
         <input type="email" name="email" placeholder="email" {...register("email",{required:true})}/>
         <input type="text" name="mobile" placeholder="mobile" {...register("mobile",{required:true})}/>
         <ButtonHover background="green" height="60px" type="submit" text="Register"/> 

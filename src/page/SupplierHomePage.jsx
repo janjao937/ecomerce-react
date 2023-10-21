@@ -14,6 +14,7 @@ import EditProductForms from "../component/EditProductForm";
 const SupplierHomePage = () => {
     const [isAdd,setIsAdd] = useState(false);
     const [isEdit,setIsEdit] = useState(false);
+    const [editProductId,setEditProductId] = useState(null);
 
     const [file,setFile] = useState(null);
     const [allProductData,setAllProductData] =useState(null);
@@ -30,10 +31,54 @@ const SupplierHomePage = () => {
     const CloseModal =()=>{
         setIsAdd(false);
     }
-    const OpenEditHandler = ()=>{
+    const OpenEditHandler = async(productId)=>{
       setIsEdit(true);
+      try{
+        const res = await myAxios.get("/product/"+productId);
+        const editProduct =res.data.productData
+        console.log(editProduct);
+        // setEditImg(editProduct.img);
+        setInputForm({
+          name:editProduct.name,
+          title:editProduct.title,
+          price:editProduct.price,
+          amount:editProduct.amount,
+        });
+        setEditProductId(productId);
+        // setFile(editProduct.img)
+      }
+      catch(error){
+        console.log(error);
+      }
+
     }
-    const OnCloseEditHandler = ()=>{
+    const OnSaveEditHandler =async(e)=>{//dont forget backend
+      e.preventDefault();
+      // const formData = new FormData();
+      // formData.append("image",file);
+      // formData.append("product",JSON.stringify(inputForm));
+      // await myAxios.patch()
+      // console.log(formData);
+      const res = await myAxios.patch(`/product/update/${editProductId}`,inputForm);
+      console.log(res);
+
+      CloseModal();
+      setInputForm({
+        name:"",
+        title:"",
+        price:"",
+        amount:"",
+    });
+    setEditProductId(null);
+
+      //refresh page
+      setFile(null);
+      window.location.reload(false);
+
+    }
+
+
+    const OnCloseEditHandler = (e)=>{
       setIsEdit(false);
       setInputForm({
         name:"",
@@ -74,18 +119,9 @@ const SupplierHomePage = () => {
         const formData = new FormData();
         formData.append("image",file);
         formData.append("product",JSON.stringify(inputForm));
-        //add data to axios
-        /*        
-        const res = await myAxios("/product/add",{
-          name:"test",
-          title:"asdasd",
-          price:"122",
-          amount:"12",
-          img:"asdasdasdasdasd"
-      });*/
+
       const res = await myAxios.post("/product/add",formData);//error
-      // const res = await myAxios("/product/add",inputForm);//error
-      
+
         // console.log(inputForm);
         console.log(res);
         CloseModal();
@@ -111,79 +147,13 @@ const SupplierHomePage = () => {
   return (
     <div className="bg">
       <Modal isOpen={isAdd} header="Add-Product">
-        {/* <form className="form-container">
-          <div className="inputForm">
-            <h2>name</h2>
-            <input value={inputForm.name} onChange={(e)=>setInputForm({...inputForm,name:e.target.value})} type="text" />
-          </div>
-          <div className="inputForm">
-            <h2>title</h2>
-            <textarea value={inputForm.title} onChange={(e)=>setInputForm({...inputForm,title:e.target.value})}/>
-          </div>
-          <div className="inputForm">
-            <h2>price</h2>
-            <input value={inputForm.price} onChange={(e)=>setInputForm({...inputForm,price:e.target.value})} type="text" />
-          </div>
-          <div className="inputForm">
-            <h2>amount</h2>
-            <input value={inputForm.amount} onChange={(e)=>setInputForm({...inputForm,amount:e.target.value})} type="text" />
-          </div>
-          <div className="inputForm">
-            {
-                file?(<img src={URL.createObjectURL(file)} alt="" /> ):(
-                <input type="file" onChange={(e)=>{
-                    if(e.target.files[0]){
-                        setFile(e.target.files[0]);
-                    }
-                }} />)
-            }
-        
-          </div>
-
-          <div className="buttonForm-container">
-            <button onClick={OnAddHandler} type="submit">save</button>
-            <button onClick={OnCancleHandler} type="button">cancle</button>
-          </div>
-        </form> */}
         <AddProductForm OnAddHandler ={OnAddHandler} setFile={setFile} OnCancleHandler = {OnCancleHandler} inputForm = {inputForm} setInputForm ={setInputForm} file= {file}/>
       </Modal>
         
       <Modal isOpen={isEdit} header="Edit-Product">
-      {/* <form className="form-container">
-          <div className="inputForm">
-            <h2>name</h2>
-            <input value={inputForm.name} onChange={(e)=>setInputForm({...inputForm,name:e.target.value})} type="text" />
-          </div>
-          <div className="inputForm">
-            <h2>title</h2>
-            <textarea value={inputForm.title} onChange={(e)=>setInputForm({...inputForm,title:e.target.value})}/>
-          </div>
-          <div className="inputForm">
-            <h2>price</h2>
-            <input value={inputForm.price} onChange={(e)=>setInputForm({...inputForm,price:e.target.value})} type="text" />
-          </div>
-          <div className="inputForm">
-            <h2>amount</h2>
-            <input value={inputForm.amount} onChange={(e)=>setInputForm({...inputForm,amount:e.target.value})} type="text" />
-          </div>
-          <div className="inputForm">
-            {
-                file?(<img src={URL.createObjectURL(file)} alt="" /> ):(
-                <input type="file" onChange={(e)=>{
-                    if(e.target.files[0]){
-                        setFile(e.target.files[0]);
-                    }
-                }} />)
-            }
-        
-          </div>
 
-          <div className="buttonForm-container">
-            <button  type="submit">save</button>
-            <button onClick={OnCloseEditHandler} type="button">cancle</button>
-          </div>
-        </form> */}
-        <EditProductForms OnCloseEditHandler ={OnCloseEditHandler} setFile={setFile} inputForm ={inputForm} setInputForm = {setInputForm} file = {file}/>
+        <EditProductForms OnSave = {OnSaveEditHandler} OnCloseEditHandler ={OnCloseEditHandler} setFile={setFile} inputForm ={inputForm} setInputForm = {setInputForm} file = {file}/>
+        {/* <EditProductForms oldImg={editImg} OnCloseEditHandler ={OnCloseEditHandler} setFile={setFile} inputForm ={inputForm} setInputForm = {setInputForm} file = {file}/> */}
       </Modal>
 
       <h1 style={{ textAlign: "center", padding: "30px 0", fontSize: "5rem" }}>

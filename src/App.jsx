@@ -8,7 +8,7 @@ import Route from "./router/Route";
 import RegisterForm from "./component/RegisterForm";
 import "./App.scss";
 import AuthContextProvider from "./context/AuthContext";
-import ProductContextProvider from "./context/ProductContext";
+import ProductContextProvider from "./context/ProductCustomerContext";
 
 function App() {
   return (

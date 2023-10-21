@@ -34,7 +34,7 @@ const ItemSupplier = ({product,OnEdit})=>{
         <h1>{product.name}</h1>
         <h1>Price:{product.price}</h1>
         <h1>amount:{product.amount}</h1>
-        <button onClick={()=> OnEdit()}>Edit</button>
+        <button onClick={()=> OnEdit(product.id)}>Edit</button>
         <button onClick={()=>OnDelete()}>Delete</button>
       </div>
     )

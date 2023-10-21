@@ -57,7 +57,7 @@ const AuthContextProvider = ({children})=>{
         accessToken.addAccessToken(res.data.accessToken);
         const userData = res.data.customer||res.data.supplier;
         setAuthUser(userData);
-        console.log(authUser);
+        // console.log(authUser);
     }
     const registerSupplier =async(registerInput) =>{
         console.log(registerInput);
@@ -73,7 +73,7 @@ const AuthContextProvider = ({children})=>{
         accessToken.addAccessToken(res.data.accessToken);
         const userData = res.data.customer||res.data.supplier;
         setAuthUser(userData);
-        console.log(userData);
+        // console.log(userData);
 
     }
 
