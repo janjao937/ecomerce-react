@@ -39,8 +39,11 @@
 }
 .itemSupplier-function{
     display: flex;
+    // display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 100%;
-    width: 10%;
+    width: 200px;
     gap: 20px;
 }
 

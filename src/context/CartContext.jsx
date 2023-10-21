@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import React from "react";
+import myAxios from "../config/myAxios";
 const cartContext = React.createContext();
 
 const CartContextProvider = ({children})=>{
@@ -23,7 +24,17 @@ const CartContextProvider = ({children})=>{
             setCartItems([...cartItems,{...product,quantity:1}]);
         }
     }
+    //call create or increse
+    const AddProductResponse = ()=>{
 
+        // myAxios.post//create new item
+
+        // myAxios.patch //add amount
+    }
+    //call Delete or remove
+    const RemoveProductResponse = ()=>{
+
+    }
 
     const RemoveProduct = (product)=>{
          //remove item in cart 
@@ -52,5 +63,5 @@ const CartContextProvider = ({children})=>{
     )
 }
 
-export default CartContextProvider;
+export default CartContextProvider;//use in LayoutCustomer
 export {cartContext};
