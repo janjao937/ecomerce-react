@@ -78,7 +78,7 @@ const SupplierHomePage = () => {
     }
 
 
-    const OnCloseEditHandler = (e)=>{
+    const OnCloseEditHandler = ()=>{
       setIsEdit(false);
       setInputForm({
         name:"",

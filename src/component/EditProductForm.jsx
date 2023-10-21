@@ -19,7 +19,7 @@ const EditProductForms = ({OnCloseEditHandler,inputForm,setInputForm,file,setFil
           <h2>amount</h2>
           <input value={inputForm.amount} onChange={(e)=>setInputForm({...inputForm,amount:e.target.value})} type="text" />
         </div>
-        <div className="inputForm">
+        {/* <div className="inputForm">
           {
               file?(<img src={URL.createObjectURL(file)} alt={URL.createObjectURL(file)} />):""          
           }
@@ -29,7 +29,7 @@ const EditProductForms = ({OnCloseEditHandler,inputForm,setInputForm,file,setFil
                   }
               }} />
 
-        </div>
+        </div> */}
 
         <div className="buttonForm-container">
         {/* onClick={} */}

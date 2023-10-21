@@ -6,13 +6,6 @@ import {BACKEND_URL} from "../config/env";
 
 const ItemSupplier = ({product,OnEdit})=>{
     // const [isEdit,setEdit] = useState(false);
-    // const OnEditHandler = ()=>{
-    //     setEdit(!isEdit);
-    // }
-    // const OnSaveHandler = ()=>{
-    //     setEdit(!isEdit);
-    // }
-
    //Edit Delete Add
    const OnDelete = async()=>{
      try{
@@ -34,8 +27,11 @@ const ItemSupplier = ({product,OnEdit})=>{
         <h1>{product.name}</h1>
         <h1>Price:{product.price}</h1>
         <h1>amount:{product.amount}</h1>
+        <div className="function">
         <button onClick={()=> OnEdit(product.id)}>Edit</button>
         <button onClick={()=>OnDelete()}>Delete</button>
+        </div>
+
       </div>
     )
 }
