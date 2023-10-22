@@ -9,13 +9,17 @@ import CustomerHomePage from "../page/CustomerHomePage";
 import Cart from "../component/Cart";
 import SupplierHomePage from "../page/SupplierHomePage";
 import GamePage from "../page/GamePage";
-import SupplierRegisterForm from "../component/SupplierRegisterForm";
+// import SupplierRegisterForm from "../component/SupplierRegisterForm";
 import OrderSupplierPage from "../page/OrderSupplierPage";
 import OrderCustomerPage from "../page/OrderCustomerPage";
+import LayoutSupplier from "../page/LayoutSupplierPage";
 
 const router = createBrowserRouter([
     {path:"/game",element:(
         <GamePage/>
+    )},
+    {path:"/ordersupplier",element:(
+        <OrderSupplierPage/>
     )},
     {path:"/register",element:(
         <RedirectIfAuthenticated>
@@ -32,13 +36,13 @@ const router = createBrowserRouter([
         path:"/supplier",
         element:(
         <Authenticated>
-            <LayoutCustomer/>
+            <LayoutSupplier/>
         </Authenticated>
         
         ),
         children:[
             {path:"",element:(<SupplierHomePage/>)},
-            {path:"/order",element:(<OrderSupplierPage/>)},
+            // {path:"/order",element:(<OrderSupplierPage/>)}
 
         ]
     },
