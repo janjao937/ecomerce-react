@@ -11,6 +11,7 @@ import SupplierHomePage from "../page/SupplierHomePage";
 import GamePage from "../page/GamePage";
 import SupplierRegisterForm from "../component/SupplierRegisterForm";
 import OrderSupplierPage from "../page/OrderSupplierPage";
+import OrderCustomerPage from "../page/OrderCustomerPage";
 
 const router = createBrowserRouter([
     {path:"/game",element:(
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
         children:[
             {path:"",element:(<CustomerHomePage/>)},
             {path:"/cart",element:(<Cart/>)},
+            {path:"/order",element:(<OrderCustomerPage/>)},
 
         ]
     }
