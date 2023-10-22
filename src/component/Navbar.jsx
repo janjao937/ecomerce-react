@@ -36,8 +36,8 @@ const Navbar =()=>{
       <span>GAME</span>
       <span>CART</span>
       <div className="dropdown">
-        <span onClick={()=>logout()}>CUSTOMER</span>
-        <div className="dropdown-content">
+        <span>CUSTOMER</span>
+        <div className="dropdown-user">
           <span onClick={()=>logout()}>LOGOUT</span>
         </div>
       </div>

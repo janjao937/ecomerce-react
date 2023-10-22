@@ -27,6 +27,42 @@ const CartContextProvider = ({children})=>{
     // const RemoveProductResponse = ()=>{
 
     // }
+    //data in cartItems
+    // "userCartData": [
+    //     {
+    //         "id": 37,
+    //         "amount": 3,
+    //         "isOrderStatus": 0,
+    //         "productId": 15,
+    //         "customerId": "clnsmsjbu0000v71k1hhb5i10",
+    //         "product": {
+    //             "id": 15,
+    //             "name": "boonyakit kittiviroj",
+    //             "title": "asdasd",
+    //             "amount": 20,
+    //             "price": 20,
+    //             "img": "image_1697706788917.png",
+    //             "supplierId": "clnt00ivx0000v78sk7aoxtia",
+    //             "supplier": {
+    //                 "shopName": "woodie"
+    //             }
+    //         }
+    //     }
+
+    // { id:"12",shopName:"bongShop",name:"Bong3",category:"Decorate",title:"this Bong",price:1000,img:"https://highsostore.com/wp-content/uploads/2021/11/PB-004-_-Aladdin-Bong-45degree.jpg"},
+
+    useEffect(()=>{
+        myAxios.get("/cart").then(cartItems => {
+            // console.log(cartItems.data.userCartData);
+            // setCartItems(cartItems.data.userCartData);
+            const product = [];
+            const userData = cartItems.data.userCartData;
+            userData.map(e=>product.push({...e.product,quantity:e.amount}));
+            setCartItems(product);
+            console.log(product);
+
+       }).catch(err=>console.log(err));
+    },[]);
 
     const createCart = async(product)=>{
         // console.log(product)
@@ -56,27 +92,31 @@ const CartContextProvider = ({children})=>{
         console.log(res);
     }
     const DeleteCart = async(product)=>{
-        const res = await myAxios.delete("/cart/delete",{
+        const res = await myAxios.delete("/cart/delete/"+product.id,{
             productId:product.id
         });
         return res;
     }
 
 
-
+    // const [isSending,setIsSending] = useState({timeid:0,status:false});
+   
     const AddProduct = async(product) =>{
         //add item to cart 
         const productExist = cartItems.find((item)=>item.id === product.id);
         if(productExist){
             setCartItems(cartItems.map((item)=>item.id === product.id?{...productExist,quantity:productExist.quantity+1}:item));
             //patch
-           
-            const res = await IncreseAmout(product);
+           const  res = await IncreseAmout(product);
+            //set timeout
+            return res;
         }
         else{
             setCartItems([...cartItems,{...product,quantity:1}]);
-            //create
             const res = await createCart(product);
+
+            //create
+            return res;
         }
     }
 
@@ -87,12 +127,12 @@ const CartContextProvider = ({children})=>{
          if(productExist.quantity === 1){
             setCartItems(cartItems.filter((item)=>item.id !== product.id));
             //delete
-            // const res = await DeleteCart(product);
+            const res = await DeleteCart(product);
          }
          else{
             setCartItems(cartItems.map((item)=>item.id === product.id?{...productExist,quantity:productExist.quantity-1}:item));
             //patch
-            // const res = await DecreseAmout(product);
+            const res = await DecreseAmout(product);
          }
     }
 

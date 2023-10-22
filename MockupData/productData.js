@@ -18,3 +18,8 @@
  }
 
  export default data;
+
+
+ /*
+ res ที่รับจาก getCartByUser ให้ส่งรายละเอียด product มาด้วย
+ */

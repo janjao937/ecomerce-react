@@ -25,7 +25,7 @@ const NavbarSupplier =()=>{
     <div className="bar-container">
       <div className="dropdown">
         <span>SUPPLIER</span>
-        <div className="dropdown-content">
+        <div className="dropdown-user">
           <p>PROFILE</p>
           <span onClick={()=>logout()}>LOGOUT</span>
         </div>
