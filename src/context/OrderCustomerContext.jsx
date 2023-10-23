@@ -11,7 +11,7 @@ const OrderCustomerContextProvider = ({children})=>{
     const [watingToOrder,setWaitingToOrder] = useState([]);//from cartItem
     const [isOrder,setIsOrder] = useState([]);//from back
 
-    const CreateOrderByCartAndShopName = ()=>{
+    const FillterOrderInCartByShopName = ()=>{
         // console.log(cartItems);//แยก สินค้าให้ match กับ shop เพื่อ order
         const mockUpOrder = []
         cartItems.map(e=>{
@@ -20,9 +20,12 @@ const OrderCustomerContextProvider = ({children})=>{
         console.log(mockUpOrder);
     }
 
+    const OrderItem=()=>{
+
+    }
     
     return(
-        <OrderCustomerContext.Provider value={{CreateOrderByCartAndShopName}}>
+        <OrderCustomerContext.Provider value={{FillterOrderInCartByShopName}}>
             {children }
         </OrderCustomerContext.Provider>
     )

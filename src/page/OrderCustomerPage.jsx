@@ -3,10 +3,10 @@ import useOrderCustomerContext from "../customHook/useOrderCustomerContext";
 
 
 const OrderCustomerPage = ()=>{
-    const ctx = useOrderCustomerContext();//CreateOrderByCartAndShopName
+    const ctx = useOrderCustomerContext();//FillterOrderInCartByShopName
 
 
-    
+
     return(
         <div>
             OrderCustomerPage
@@ -14,7 +14,7 @@ const OrderCustomerPage = ()=>{
                 <h1>Waiting to order</h1>
                 <div>
                     List shopName + cartProduct
-                    <button onClick={ctx.CreateOrderByCartAndShopName}>order</button>
+                    <button onClick={ctx.FillterOrderInCartByShopName}>order</button>
                 </div>
             </div>
             <div>
