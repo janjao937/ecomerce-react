@@ -13,6 +13,8 @@ import GamePage from "../page/GamePage";
 import OrderSupplierPage from "../page/OrderSupplierPage";
 import OrderCustomerPage from "../page/OrderCustomerPage";
 import LayoutSupplier from "../page/LayoutSupplierPage";
+import OrderCustomerContextProvider from "../context/OrderCustomerContext";
+import CartContextProvider from "../context/CartContext";
 
 const router = createBrowserRouter([
     {path:"/game",element:(
@@ -57,7 +59,14 @@ const router = createBrowserRouter([
         children:[
             {path:"",element:(<CustomerHomePage/>)},
             {path:"/cart",element:(<Cart/>)},
-            {path:"/order",element:(<OrderCustomerPage/>)},
+            {path:"/order",element:(
+                <CartContextProvider>
+                <OrderCustomerContextProvider>
+                    <OrderCustomerPage/>
+                 </OrderCustomerContextProvider>
+                </CartContextProvider>
+              
+            )},
 
         ]
     }

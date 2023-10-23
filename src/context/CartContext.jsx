@@ -136,16 +136,21 @@ const CartContextProvider = ({children})=>{
          }
     }
 
-    const Total = ()=>{
-        let initialValue = 0;
-        //reduce cart Item
-         const total =cartItems?.reduce(e=>e.price*e.quantity,initialValue);
-         setTotalPrice(total);//set state totalPrice
-         console.log(totalPrice);
+    // const Total = ()=>{
+    //     let initialValue = 0;
+    //     //reduce cart Item
+    //      const total =cartItems?.reduce(e=>e.price*e.quantity,initialValue);
+    //      setTotalPrice(total);//set state totalPrice
+    //      console.log(totalPrice);
          
-    }
+    // }
 
     const CreateOrder = ()=>{
+        // const order = {
+        //     shopName,
+        //     orderProduct:[{productName,amount,totalPrice},{}]
+            
+        // }
 
     }
 

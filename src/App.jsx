@@ -9,6 +9,8 @@ import RegisterForm from "./component/RegisterForm";
 import "./App.scss";
 import AuthContextProvider from "./context/AuthContext";
 import ProductContextProvider from "./context/ProductCustomerContext";
+import CartContextProvider from "./context/CartContext";
+import OrderCustomerContextProvider from "./context/OrderCustomerContext";
 
 function App() {
   return (
@@ -20,7 +22,11 @@ function App() {
 
    <AuthContextProvider>
     <ProductContextProvider>
+    {/* <CartContextProvider> */}
+    {/* <OrderCustomerContextProvider> */}
         <Route/>
+    {/* </OrderCustomerContextProvider> */}
+    {/* </CartContextProvider> */}
 
     </ProductContextProvider>
    </AuthContextProvider>

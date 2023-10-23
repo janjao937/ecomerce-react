@@ -3,9 +3,21 @@ import "../UiStyles/Dropdown.scss";
 import "../UiStyles/navbar.scss";
 import useAuthContext from "../customHook/useAuthContext";
 import useCartContext from "../customHook/usecartContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar =()=>{
+  const navigete = useNavigate();
+  
+  const navaigateToOrder = () =>{
+      navigete("/order");
+  }
+  const navaigateToGame = () =>{
+      navigete("/game");
+  }
 
+  const navigateToCart = ()=>{
+    navigete("/cart");
+  }
     const ctx = useCartContext();
     const {logout} = useAuthContext();
 
@@ -33,8 +45,9 @@ const Navbar =()=>{
     <div className="bar-container">
       <div className="bar-item">
       {/* <span>FAVORIT</span> */}
-      <span>GAME</span>
-      <span>CART</span>
+      <span onClick={navaigateToGame}>GAME</span>
+      <span onClick={navigateToCart}>CART</span>
+      <span onClick={navaigateToOrder}>ORDER</span>
       <div className="dropdown">
         <span>CUSTOMER</span>
         <div className="dropdown-user">
