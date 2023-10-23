@@ -5,7 +5,7 @@ import myAxios from "../config/myAxios";
 import { useEffect } from "react";
 import { cartContext } from "./CartContext";
 
-
+//product.product.isOrderStatus ใช้แยก order 
 
 const OrderCustomerContext = createContext();
 
@@ -37,14 +37,30 @@ const OrderCustomerContextProvider = ({children})=>{
     //     setWaitingToOrder(mockUpOrder);
     //     //add in watingToOrder state
     // }
+    const [allOrderItem,setAllOrderItem] = useState([]);//for get allOrderItem if product.isOrderStatus = 1
+    useEffect(()=>{
+        // console.log("order");
+
+        getOrder().then(()=>console.log("get order success"));
+    },[]);
+    
+    const getOrder = async()=>{
+        //find order by customerId and product.isOrderStatus = 1
+        //get dat in state allOrderItem
+        const allProduct = await myAxios.get("/order");
+        console.log(allProduct.data.allOrder);//order
+
+    }
     
     const FillterOrderInCartByShopName = ()=>{
-        console.log("order");
-        console.log(cartItems)
+
         const mockUpOrder = []
         cartItems.map(e=>{
             mockUpOrder.push({product:e,cartId:e.cartId,isOrderStatus:e.isOrderStatus,price:e.price,amount:e.quantity,supplier:e.supplier,totalPrice:e.price*e.quantity});//order object for waitingOrder
         });
+
+        // console.log("order");
+        // console.log(cartItems)
 
         return mockUpOrder;
     }

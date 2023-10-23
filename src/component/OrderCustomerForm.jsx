@@ -3,30 +3,29 @@ import { BACKEND_URL } from "../config/env";
 import ButtonHover from "./ButtonHover";
 import myAxios from "../config/myAxios";
 
+//product.product.isOrderStatus ใช้อันนี้แยก order ก่อน
 
 const OrderCustomerFrom = ({ product }) => {
   const [address, setAdress] = useState("");
-  const [file,setFile] = useState(null)
+  const [file,setFile] = useState(null);
+
   const OnSubmitForm = async(e) => {
     e.preventDefault();
- 
 
-    //myaxios update cart item isOrderStatus
+    //myaxios create order 
+       const formData = new FormData();
+      formData.append("image",file);
+      formData.append("adress",JSON.stringify(address));
+      formData.append("cartId",JSON.stringify(product.cartId));
+      
+      await myAxios.post("/order/create",formData);
 
-    //myaxios create order
-       //set fileImg to inputForm  
-      //  const formData = new FormData();
-      //  formData.append("image",file);
-      //  formData.append("adress",JSON.stringify(address));
-      //  formData.append("cartId",JSON.stringify(product.cartId));
+    // console.log(product.product);
+    // console.log(product.isOrderStatus);
+    // console.log("adress:", address);
+    // console.log("cartId:",product.cartId);
 
-    //  const res = await myAxios.post("/order/create",formData);
-
-    console.log(product.product);
-    console.log(product.isOrderStatus);
-    console.log("adress:", address);
-    console.log("cartId:",product.cartId)
-    setAdress("");
+    setAdress("");//reset adress
   };
 
   return (
@@ -81,23 +80,18 @@ const OrderCustomerFrom = ({ product }) => {
             src={`${BACKEND_URL}/${product.supplier.paymentQrImg}`}
             alt="slipNull"
           />
-           <h2>Slip</h2>
-          {!file&&product.product.isOrderStatus==0?(<img
-            width={"200px"}
-            height={"200px"}
-            src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-            alt="slipNull"
-          />):file?<img width={"200px"} height={"200px"} src={URL.createObjectURL(file)} alt="slipUpload"/>:""}
-            <input type="file" onChange={(e)=>{
+           {product.product.isOrderStatus==0&&<h2>Slip</h2>}
+          {file&&product.product.isOrderStatus==0?<img width={"200px"} height={"200px"} src={URL.createObjectURL(file)} alt="slipUpload"/>:""}
+          {product.product.isOrderStatus==0&&<input type="file" onChange={(e)=>{
                     if(e.target.files[0]){
                         setFile(e.target.files[0]);
                     }
-                }} />
+                }} />}
         </div>
       </div>
       <br />
       <br />
-      <ButtonHover onClick={OnSubmitForm} background="brown" text="Order"/>
+      {product.product.isOrderStatus==0&&<ButtonHover onClick={OnSubmitForm} background="brown" text="Order"/>}
 
       <br />
       <br />

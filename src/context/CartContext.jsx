@@ -58,9 +58,11 @@ const CartContextProvider = ({children})=>{
             const product = [];
             const userData = cartItems.data.userCartData;
             // console.log(userData)
+
+            //ดัก order ที่นี่ product.isOrderStatus = 0
             userData.map(e=>product.push({...e.product,cartId:e.id,quantity:e.amount,isOrderStatus:e.isOrderStatus}));
             setCartItems(product);
-            console.log(product);
+            // console.log(product);
 
        }).catch(err=>console.log(err));
     },[]);
