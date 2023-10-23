@@ -22,7 +22,7 @@ const Navbar =()=>{
     const {logout} = useAuthContext();
 
     return(<div className="bar">
-    <div className="bar-container">
+    <div className="bar-container-L">
     
       <div className="dropdown">
         <span>CATEGORY</span>

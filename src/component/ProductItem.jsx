@@ -21,7 +21,9 @@ const ProductItem = ({productItem}) =>{
     return(
         <div className="prooductItem">
             {/* {productItem.id} */}
-            <img src={`${BACKEND_URL}/${productItem.img}`}  width="300px" height="250px"  alt="" />
+            <div style={{width:"100%",display:"flex"}}>
+            <img  style={{margin:"auto"}} src={`${BACKEND_URL}/${productItem.img}`}  width="300px" height="250px"  alt="" />
+            </div>
            
             <div className="prooductItem-text">
                 

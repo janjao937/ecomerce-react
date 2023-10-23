@@ -22,8 +22,27 @@ $bar-bar-color : sandybrown;
         gap: 20px;
         padding-top: 25px;
         align-items: center;
+        justify-content: end;
+        width: 210px;
+    }
+    .bar-container-L{
+        display: flex;
+        gap: 20px;
+        padding-top: 25px;
+        align-items: center;
+        justify-content: start;
+        width: 210px;
         
     }
+    // .bar-container-R{
+    //     display: flex;
+    //     gap: 20px;
+    //     padding-top: 25px;
+    //     align-items: center;
+    //     justify-content: start;
+    //     width: 210px;
+        
+    // }
 
     .bar-item{
         display: flex;

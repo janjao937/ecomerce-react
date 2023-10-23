@@ -19,7 +19,7 @@ const CustomerHomePage = ()=>{
 
     return (    
         <div>
-            <button onClick={onCartClickHandler}>Cart</button>
+            {/* <button onClick={onCartClickHandler}>Cart</button> */}
             <div className="headerText"> All Product</div>
             <div className="productContainer">
                 {/* {console.log(homeProducts)} */}

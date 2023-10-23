@@ -11,7 +11,7 @@ const NavbarSupplier =()=>{
     return(<div className="bar">
     <div className="bar-container">
     
-    <div className="bar-container">
+    <div className="bar-container-L">
       <div className="bar-item">
       <span>ORDER</span>
       <span>MY PRODUCT</span>

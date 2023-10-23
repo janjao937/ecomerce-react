@@ -34,7 +34,7 @@ const Cart = ()=>{
             {
                 cartItems.map(e=>{
                     // const quantity = CountQuantity(e.id);
-                    console.log(e);
+                    // console.log(e);
                     // return <CartItem key={e.product.id} product={e.product} quantity={e.amount}/>
                     return <CartItem key={e.id} product={e} quantity={e.quantity}/>
                 })

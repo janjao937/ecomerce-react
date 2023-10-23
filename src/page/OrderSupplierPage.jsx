@@ -26,6 +26,7 @@ const OrderSupplierPage = ()=>{
         formData.append("image",file);
         const {qrUpload} = await myAxios.patch("/qr/upload",formData);
         setQr(qrUpload);
+        window.location.reload(false);//refesh Page
     }
 
 
