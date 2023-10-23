@@ -43,7 +43,7 @@ const OrderCustomerContextProvider = ({children})=>{
         console.log(cartItems)
         const mockUpOrder = []
         cartItems.map(e=>{
-            mockUpOrder.push({product:e,isOrderStatus:e.isOrderStatus,price:e.price,amount:e.quantity,supplier:e.supplier,totalPrice:e.price*e.quantity});//order object for waitingOrder
+            mockUpOrder.push({product:e,cartId:e.cartId,isOrderStatus:e.isOrderStatus,price:e.price,amount:e.quantity,supplier:e.supplier,totalPrice:e.price*e.quantity});//order object for waitingOrder
         });
 
         return mockUpOrder;

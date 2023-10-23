@@ -1,22 +1,32 @@
 import { useState } from "react";
 import { BACKEND_URL } from "../config/env";
 import ButtonHover from "./ButtonHover";
+import myAxios from "../config/myAxios";
 
 
 const OrderCustomerFrom = ({ product }) => {
   const [address, setAdress] = useState("");
-
-  const OnSubmitForm = (e) => {
+  const [file,setFile] = useState(null)
+  const OnSubmitForm = async(e) => {
     e.preventDefault();
+ 
+
+    //myaxios update cart item isOrderStatus
+
+    //myaxios create order
+       //set fileImg to inputForm  
+      //  const formData = new FormData();
+      //  formData.append("image",file);
+      //  formData.append("adress",JSON.stringify(address));
+      //  formData.append("cartId",JSON.stringify(product.cartId));
+
+    //  const res = await myAxios.post("/order/create",formData);
+
     console.log(product.product);
     console.log(product.isOrderStatus);
     console.log("adress:", address);
+    console.log("cartId:",product.cartId)
     setAdress("");
-
-    //myaxios update cart item isOrderStatus
-    //myaxios create order
-
-
   };
 
   return (
@@ -64,14 +74,25 @@ const OrderCustomerFrom = ({ product }) => {
         ></textarea>
 
         <div style={{display:"flex", flexDirection:"column"}}>
-          <h2>Slip</h2>
+        <h2>QR Payment</h2>
           <img
+            width={"200px"}
+            height={"200px"}
+            src={`${BACKEND_URL}/${product.supplier.paymentQrImg}`}
+            alt="slipNull"
+          />
+           <h2>Slip</h2>
+          {!file&&product.product.isOrderStatus==0?(<img
             width={"200px"}
             height={"200px"}
             src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
             alt="slipNull"
-          />
-          <input type="file" />
+          />):file?<img width={"200px"} height={"200px"} src={URL.createObjectURL(file)} alt="slipUpload"/>:""}
+            <input type="file" onChange={(e)=>{
+                    if(e.target.files[0]){
+                        setFile(e.target.files[0]);
+                    }
+                }} />
         </div>
       </div>
       <br />

@@ -57,7 +57,8 @@ const CartContextProvider = ({children})=>{
             // setCartItems(cartItems.data.userCartData);
             const product = [];
             const userData = cartItems.data.userCartData;
-            userData.map(e=>product.push({...e.product,quantity:e.amount,isOrderStatus:e.isOrderStatus}));
+            // console.log(userData)
+            userData.map(e=>product.push({...e.product,cartId:e.id,quantity:e.amount,isOrderStatus:e.isOrderStatus}));
             setCartItems(product);
             console.log(product);
 
