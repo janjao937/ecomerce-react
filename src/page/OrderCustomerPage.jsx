@@ -2,10 +2,16 @@ import { useState } from "react";
 import useOrderCustomerContext from "../customHook/useOrderCustomerContext";
 import { useEffect } from "react";
 import OrderCustomerFrom from "../component/OrderCustomerForm";
+import OrderItemCustomerComponent from "../component/OrderItemCustomerComponent";
 
 
 const OrderCustomerPage = ()=>{
     const ctx = useOrderCustomerContext();//FillterOrderInCartByShopName
+    const [orderList,setOrderList] = useState([]);
+
+    useEffect(()=>{
+        ctx.getOrder().then((e)=>setOrderList([...e.data.allOrder]));
+    },[]);
 
 
     return(
@@ -28,8 +34,10 @@ const OrderCustomerPage = ()=>{
             <br/>
             <div>
                 <h1 style={{textAlign:"center",background:"green"}}>My Order</h1>
-                <div>
-                    Ordered List
+                <div style={{display:"flex",justifyContent:"center"}}>
+                   {
+                    orderList.map((e,index)=><OrderItemCustomerComponent key={index} data={e}/>)
+                   }
                 </div>
             </div>
         </div>

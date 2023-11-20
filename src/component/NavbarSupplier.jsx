@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../App.scss";
 import "../UiStyles/Dropdown.scss";
 import "../UiStyles/navbar.scss";
@@ -8,12 +9,15 @@ const NavbarSupplier =()=>{
 
     const {logout} = useAuthContext();
 
+    const navigete = useNavigate();
+    const navigateToOrder = ()=>navigete("/ordersupplier");
+
     return(<div className="bar">
     <div className="bar-container">
     
     <div className="bar-container-L">
       <div className="bar-item">
-      <span>ORDER</span>
+      <span onClick={navigateToOrder}>ORDER</span>
       <span>MY PRODUCT</span>
       </div>
      
@@ -26,7 +30,7 @@ const NavbarSupplier =()=>{
       <div className="dropdown">
         <span>SUPPLIER</span>
         <div className="dropdown-user">
-          <p>PROFILE</p>
+          {/* <p>PROFILE</p> */}
           <span onClick={()=>logout()}>LOGOUT</span>
         </div>
         </div>

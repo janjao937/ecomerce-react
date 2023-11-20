@@ -69,10 +69,10 @@ const CartContextProvider = ({children})=>{
 
     const createCart = async(product)=>{
         // console.log(product)
-        const res = await myAxios.post("/cart/create",{
+        const res = await myAxios.post("/cart/add-item",{
             productId:product.id,
-            isOrderStatus:0,
-            amount:1
+            // isOrderStatus:0,
+            // amount:1
         });
 
         // console.log("create cart"+res);
@@ -82,7 +82,7 @@ const CartContextProvider = ({children})=>{
 
     const IncreseAmout = async (product)=>{
         console.log(product);
-        const res = await myAxios.patch("/cart/add",{
+        const res = await myAxios.patch("/cart/add-item",{
             productId:product.id,
         });
         console.log(res);

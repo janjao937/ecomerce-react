@@ -13,15 +13,19 @@ import GamePage from "../page/GamePage";
 import OrderSupplierPage from "../page/OrderSupplierPage";
 import OrderCustomerPage from "../page/OrderCustomerPage";
 import LayoutSupplier from "../page/LayoutSupplierPage";
-import OrderCustomerContextProvider from "../context/OrderCustomerContext";
 import CartContextProvider from "../context/CartContext";
+import OrderSupplierContextProvider from "../context/OrderSupplierContext";
+import OrderCustomerContextProvider from "../context/OrderCustomerContext";
+
 
 const router = createBrowserRouter([
     {path:"/game",element:(
         <GamePage/>
     )},
     {path:"/ordersupplier",element:(
-        <OrderSupplierPage/>
+        <OrderSupplierContextProvider>
+            <OrderSupplierPage/>
+        </OrderSupplierContextProvider>
     )},
     {path:"/register",element:(
         <RedirectIfAuthenticated>

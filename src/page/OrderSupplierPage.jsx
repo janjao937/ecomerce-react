@@ -3,12 +3,14 @@ import myAxios from "../config/myAxios";
 import ButtonHover from "../component/ButtonHover";
 import { useEffect } from "react";
 import {BACKEND_URL} from "../config/env";
+import useOrderSupplierContext from "../customHook/useOrderSupplierContext";
 
 
 
 
 //show QR code + upload /show order
 const OrderSupplierPage = ()=>{
+    const ctx = useOrderSupplierContext();
 
     const [file,setFile] = useState(null);
     const [qr,setQr] = useState(null);
@@ -18,6 +20,10 @@ const OrderSupplierPage = ()=>{
             console.log(qr.data.paymentQrImg)
             setQr(qr.data.paymentQrImg.paymentQrImg);
         }).catch(err=>console.log(err));
+    },[]);
+
+    useEffect(()=>{
+        ctx.getAllOrder().then(e=>console.log(e.data));//get allOrder from back
     },[]);
 
     const OnUploadHandler = async(e)=>{
@@ -49,7 +55,7 @@ const OrderSupplierPage = ()=>{
             <br/>
             <h1>Supplier Order</h1>
             <div>
-                order
+                order supplier
             </div>
         </form>
     );

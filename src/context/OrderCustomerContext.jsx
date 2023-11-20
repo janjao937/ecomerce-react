@@ -38,19 +38,22 @@ const OrderCustomerContextProvider = ({children})=>{
     //     //add in watingToOrder state
     // }
     const [allOrderItem,setAllOrderItem] = useState([]);//for get allOrderItem if product.isOrderStatus = 1
-    useEffect(()=>{
-        // console.log("order");
+    // useEffect(()=>{
+    //     // console.log("order");
 
-        getOrder().then(()=>console.log("get order success"));
-    },[]);
+    //     getOrder().then((orders)=>setAllOrderItem(orders.allOrderItem));
+    // },[]);
     
     const getOrder = async()=>{
         //find order by customerId and product.isOrderStatus = 1
         //get dat in state allOrderItem
-        const allProduct = await myAxios.get("/order");
-        console.log(allProduct.data.allOrder);//order
+        return await myAxios.get("/order");
+        // console.log(allProduct.data.allOrder);//all customer order
+        // setIsOrder(allProduct.data.allOrder);
 
     }
+
+    
     
     const FillterOrderInCartByShopName = ()=>{
 
@@ -67,10 +70,11 @@ const OrderCustomerContextProvider = ({children})=>{
 
     const OnOrder = async(product)=>{
       console.log(product)//data for myAxios
+    //   console.log()
     }
     
     return(
-        <OrderCustomerContext.Provider value={{FillterOrderInCartByShopName,OnOrder}}>
+        <OrderCustomerContext.Provider value={{getOrder,allOrderItem,FillterOrderInCartByShopName,OnOrder}}>
             {children}
         </OrderCustomerContext.Provider>
     )
