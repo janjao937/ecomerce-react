@@ -8,7 +8,7 @@ import Route from "./router/Route";
 import RegisterForm from "./component/RegisterForm";
 import "./App.scss";
 import AuthContextProvider from "./context/AuthContext";
-import ProductContextProvider from "./context/ProductCustomerContext";
+// import ProductContextProvider from "./context/ProductCustomerContext";
 import CartContextProvider from "./context/CartContext";
 import OrderCustomerContextProvider from "./context/OrderCustomerContext";
 
@@ -21,14 +21,14 @@ function App() {
     <LoginForms/>  */}
 
    <AuthContextProvider>
-    <ProductContextProvider>
+    {/* <ProductContextProvider> */}
     {/* <CartContextProvider> */}
     {/* <OrderCustomerContextProvider> */}
         <Route/>
     {/* </OrderCustomerContextProvider> */}
     {/* </CartContextProvider> */}
 
-    </ProductContextProvider>
+    {/* </ProductContextProvider> */}
    </AuthContextProvider>
 
     </Popup>

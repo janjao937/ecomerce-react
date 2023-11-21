@@ -9,9 +9,21 @@ const OrderSupplierContextProvider = ({children})=>{
         return await myAxios.get("/order/supplier");
        
     }
+    //order/send
+    const updateDeliveryStatus = async(orderId,deliveryStatus)=>{
+
+        const data = await myAxios.patch("/order/delivery",{orderId,deliveryStatus});
+        return data;
+        // console.log("Change Delivery Status",orderId,deliverStatus);
+    }
+
+    const deliverySuccess  = async(orderId)=>{
+        console.log("Delivery Success and delete order" + orderId);
+        await myAxios.delete("/order/delete/"+orderId);
+    }
 
     return(
-        <OrderSupplierContext.Provider value={{getAllOrder}}>
+        <OrderSupplierContext.Provider value={{getAllOrder,updateDeliveryStatus,deliverySuccess}}>
             {children}
         </OrderSupplierContext.Provider>
     )

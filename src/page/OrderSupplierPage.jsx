@@ -4,7 +4,8 @@ import ButtonHover from "../component/ButtonHover";
 import { useEffect } from "react";
 import {BACKEND_URL} from "../config/env";
 import useOrderSupplierContext from "../customHook/useOrderSupplierContext";
-
+import OrderSupplierComponent from "../component/OrderSupplierComponent";
+import "../UiStyles/OrderSupplierStyle/orderSupplierPage.scss";
 
 
 
@@ -14,6 +15,8 @@ const OrderSupplierPage = ()=>{
 
     const [file,setFile] = useState(null);
     const [qr,setQr] = useState(null);
+    const [allOrderData,setOrderData] = useState(null);
+    const [orderLoading,setOrderLoading] = useState(true);
 
     useEffect(()=>{
         myAxios.get("/qr/get").then(qr=>{
@@ -23,7 +26,12 @@ const OrderSupplierPage = ()=>{
     },[]);
 
     useEffect(()=>{
-        ctx.getAllOrder().then(e=>console.log(e.data));//get allOrder from back
+        setOrderLoading(true);             //e.data.allSupplierProduct[0].cart
+        // ctx.getAllOrder().then(e=>console.log(e.data.allSupplierProduct));//get allOrder from back
+        ctx.getAllOrder().then(e=>{
+            setOrderData(e.data.allSupplierProduct);
+        })
+        setOrderLoading(false);
     },[]);
 
     const OnUploadHandler = async(e)=>{
@@ -37,14 +45,17 @@ const OrderSupplierPage = ()=>{
 
 
     return (
-        <form>
-            <h1>QR Code</h1>
+        <form className="orderSupplier">
+        <div className="orderSupplier__qr">
+            <h1 className="orderSupplier__header">My QRCode</h1>
                 <input type="file" onChange={(e)=>{
                     if(e.target.files[0]){
                         setFile(e.target.files[0]);
                     }
                 }} />
-
+            
+            <br/>
+            <br/>
             <div>
             {qr?(<img width="200px"src={`${BACKEND_URL}/${qr}`} alt="" /> ):(<img width="200px" src="../../MockupData/IMG/supplierPayment.png" alt="QR" />)}
                 
@@ -52,11 +63,17 @@ const OrderSupplierPage = ()=>{
             <div>
                 <ButtonHover onClick={OnUploadHandler} text="upload"/>
             </div>
-            <br/>
-            <h1>Supplier Order</h1>
-            <div>
-                order supplier
+
             </div>
+           
+            <h1 className="orderSupplier__header">My Order</h1>
+            <div>
+                {console.log(allOrderData)}
+                {(!orderLoading&&allOrderData)&&<OrderSupplierComponent data={allOrderData}/>}
+                {/* {!orderLoading?<OrderSupplierComponent data={allOrderData}/>:<></>} */}
+            </div>
+
+
         </form>
     );
 }

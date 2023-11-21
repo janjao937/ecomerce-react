@@ -14,6 +14,9 @@ const Navbar =()=>{
   const navaigateToGame = () =>{
       navigete("/game");
   }
+  const navaigateToHome = () =>{
+      navigete("/");
+  }
 
   const navigateToCart = ()=>{
     navigete("/cart");
@@ -25,13 +28,15 @@ const Navbar =()=>{
     <div className="bar-container-L">
     
       <div className="dropdown">
-        <span>CATEGORY</span>
-        <div className="dropdown-content">
+        <span onClick={navaigateToHome}>HOME</span>
+        {/* <span>CATEGORY</span> */}
+        {/* <div className="dropdown-content">
           <p>PET</p>
           <p>ART</p>
           <p>ELECTRONIC</p>
           <p>HUMAN</p>
-        </div>
+        </div> */}
+        
       </div>
 {/* 
       <div className="bar-item">
@@ -41,12 +46,12 @@ const Navbar =()=>{
      
     </div>
     <img src="../icon/icon.svg" alt="icon1" width="7%" className="icon"/>
-
+     
     <div className="bar-container">
       <div className="bar-item">
       {/* <span>FAVORIT</span> */}
       <span onClick={navaigateToGame}>GAME</span>
-      <span onClick={navigateToCart}>CART</span>
+      <span onClick={navigateToCart}>CART:{ctx.cartItems.reduce((acc,current)=>acc+current.quantity,0)}</span>
       <span onClick={navaigateToOrder}>ORDER</span>
       <div className="dropdown">
         <span>CUSTOMER</span>

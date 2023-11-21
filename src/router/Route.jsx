@@ -16,7 +16,8 @@ import LayoutSupplier from "../page/LayoutSupplierPage";
 import CartContextProvider from "../context/CartContext";
 import OrderSupplierContextProvider from "../context/OrderSupplierContext";
 import OrderCustomerContextProvider from "../context/OrderCustomerContext";
-
+import ProductContextProvider from "../context/ProductCustomerContext";
+import NavbarSupplier from "../component/NavbarSupplier";
 
 const router = createBrowserRouter([
     {path:"/game",element:(
@@ -24,7 +25,10 @@ const router = createBrowserRouter([
     )},
     {path:"/ordersupplier",element:(
         <OrderSupplierContextProvider>
+              <Authenticated>
+            <NavbarSupplier/>
             <OrderSupplierPage/>
+            </Authenticated>
         </OrderSupplierContextProvider>
     )},
     {path:"/register",element:(
@@ -48,20 +52,25 @@ const router = createBrowserRouter([
         ),
         children:[
             {path:"",element:(<SupplierHomePage/>)},
-            // {path:"/order",element:(<OrderSupplierPage/>)}
+            // {path:"/orderr",element:(<OrderSupplierPage/>)}
 
         ]
     },
+
     {
         path:"/",
         element:(
         <Authenticated>
+            <ProductContextProvider>
             <LayoutCustomer/>
+            </ProductContextProvider>
         </Authenticated>
         
         ),
         children:[
-            {path:"",element:(<CustomerHomePage/>)},
+            {path:"",element:(
+            <CustomerHomePage/>
+            )},
             {path:"/cart",element:(<Cart/>)},
             {path:"/order",element:(
                 <CartContextProvider>

@@ -5,10 +5,10 @@ import NavbarSupplier from "../component/NavbarSupplier";
 const LayoutSupplier = ()=>{
     return(
     <>
-    <CartContextProvider>
+    {/* <CartContextProvider> */}
         <NavbarSupplier/>
         <Outlet/>
-    </CartContextProvider>
+    {/* </CartContextProvider> */}
         
     </>
     )

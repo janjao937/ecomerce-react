@@ -34,7 +34,7 @@ const OrderCustomerPage = ()=>{
             <br/>
             <div>
                 <h1 style={{textAlign:"center",background:"green"}}>My Order</h1>
-                <div style={{display:"flex",justifyContent:"center"}}>
+                <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center"}}>
                    {
                     orderList.map((e,index)=><OrderItemCustomerComponent key={index} data={e}/>)
                    }

@@ -11,6 +11,7 @@ const NavbarSupplier =()=>{
 
     const navigete = useNavigate();
     const navigateToOrder = ()=>navigete("/ordersupplier");
+    const navigateToHome = ()=>navigete("/supplier");
 
     return(<div className="bar">
     <div className="bar-container">
@@ -18,7 +19,7 @@ const NavbarSupplier =()=>{
     <div className="bar-container-L">
       <div className="bar-item">
       <span onClick={navigateToOrder}>ORDER</span>
-      <span>MY PRODUCT</span>
+      <span onClick={navigateToHome}>MY PRODUCT</span>
       </div>
      
     </div>

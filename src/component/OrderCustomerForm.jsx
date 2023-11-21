@@ -10,10 +10,10 @@ const OrderCustomerFrom = ({ product }) => {
   const [file,setFile] = useState(null);
 
   const OnSubmitForm = async(e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     //myaxios create order 
-       const formData = new FormData();
+      const formData = new FormData();
       formData.append("image",file);
       formData.append("adress",JSON.stringify(address));
       formData.append("cartId",JSON.stringify(product.cartId));
@@ -91,7 +91,7 @@ const OrderCustomerFrom = ({ product }) => {
       </div>
       <br />
       <br />
-      {product.product.isOrderStatus==0&&<ButtonHover onClick={OnSubmitForm} background="brown" text="Order"/>}
+      {product.product.isOrderStatus==0&&<ButtonHover type="submit" onClick={OnSubmitForm} background="brown" text="Order"/>}
 
       <br />
       <br />
