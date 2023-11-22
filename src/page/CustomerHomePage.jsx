@@ -22,8 +22,7 @@ const CustomerHomePage = ()=>{
             {/* <button onClick={onCartClickHandler}>Cart</button> */}
             <div className="headerText"> All Product</div>
             <div className="productContainer">
-                {/* {console.log(homeProducts)} */}
-                {homeProducts?.data.products.map((e)=><ProductItem key={e.id} productItem={{id:e.id,category:e.category,name:e.name,title:e.title,price:e.price,shopName:e.shopName,img :e.img}}/>)}
+                {homeProducts?.data.products.map((e)=><ProductItem key={e.id} productItem={{id:e.id,category:e.category,name:e.name,title:e.title,price:e.price,shopName:e.supplier.shopName,img :e.img}}/>)}
             </div>
 
         </div>

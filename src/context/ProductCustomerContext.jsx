@@ -24,14 +24,17 @@ const [homeProducts,setHomeProducts] = useState(null);
   useEffect(()=>{
     getProductHome().then((products)=>{
         setHomeProducts(products);
-        console.log(homeProducts)
+        // console.log(products)
     });
     
      
 },[])
 
   const getProductHome = async()=>{
-     return await myAxios.get("/product/home");
+    const data = await myAxios.get("/product/home");
+    console.log(data);
+    return data
+     
    
   }
 

@@ -28,8 +28,9 @@ const ProductItem = ({productItem}) =>{
             <div className="prooductItem-text">
                 
                  <h1>Name:{productItem.name}</h1>
-                 <div className="productItem-text-small"> Category:{productItem.category}</div>
-                 {/* <div> Title: {productItem.title}</div> */}
+                 {/* {console.log(productItem)} */}
+                 {/* <div className="productItem-text-small"> Category:{productItem.category}</div> */}
+                 <div> Title: {productItem.title}</div>
                 <div> Sell by:{productItem.shopName}</div>
                  <h2> Price: {productItem.price}</h2>
             
