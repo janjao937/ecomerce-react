@@ -44,7 +44,7 @@ const SupplierOrderListItem = ({headerData,data}) =>{
                         <h3>Adress:{data.adress}</h3>
                         {/* <h3>DeliveryStatus:{data.deliveryStatus}</h3> */}
                         {
-                            data.deliveryStatus==0?<ButtonHover onClick={()=>OnDelivery(data.id)} text="Delivery" background="green"  width="200px"/>:
+                            data.deliveryStatus==0?<ButtonHover type="submit" onClick={()=>OnDelivery(data.id)} text="Delivery" background="green"  width="200px"/>:
                             (data.deliveryStatus==2)?<button onClick={(e)=>OnSuccessOrder(e,data.id)}>Success</button>:
                             <h1 className="card__deliveryStatus">Waiting Delivery Success</h1>
                         }   

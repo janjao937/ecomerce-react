@@ -10,7 +10,9 @@ const ItemSupplier = ({product,OnEdit})=>{
    const OnDelete = async()=>{
      try{
        await myAxios.delete(`/product/remove/${product.id}`);
+      //  console.log(product.id);
       //  console.log(res);
+
       window.location.reload(false);//refesh Page
 
     } 

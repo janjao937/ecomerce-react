@@ -12,8 +12,8 @@ const OrderSupplierContextProvider = ({children})=>{
     //order/send
     const updateDeliveryStatus = async(orderId,deliveryStatus)=>{
 
-        const data = await myAxios.patch("/order/delivery",{orderId,deliveryStatus});
-        return data;
+        return await myAxios.patch("/order/delivery",{orderId,deliveryStatus});
+        // return data;
         // console.log("Change Delivery Status",orderId,deliverStatus);
     }
 
