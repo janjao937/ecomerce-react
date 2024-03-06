@@ -27,7 +27,7 @@ const ItemSupplier = ({product,OnEdit})=>{
         <img src={BACKEND_URL+"/"+product.img} alt="" width="150px" height="100px" />
         {/* {console.log(BACKEND_URL+product.img)} */}
         <h1>{product.name}</h1>
-        <h1>Price:{product.price}</h1>
+        <h1>Price:{(product.price).toLocaleString()}</h1>
         <h1>amount:{product.amount}</h1>
         <div className="itemSupplier-function">
         <button onClick={()=> OnEdit(product.id)}>Edit</button>

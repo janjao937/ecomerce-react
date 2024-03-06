@@ -32,7 +32,7 @@ const ProductItem = ({productItem}) =>{
                  {/* <div className="productItem-text-small"> Category:{productItem.category}</div> */}
                  <div> Title: {productItem.title}</div>
                 <div> Sell by:{productItem.shopName}</div>
-                 <h2> Price: {productItem.price}</h2>
+                 <h2> Price: {(productItem.price).toLocaleString()}</h2>
             
             </div>
             <div className="btn">

@@ -16,7 +16,7 @@ const CartItem = ({product,quantity=1})=>{
              
         <h3>{product.name}</h3>
         {/* <h3>Price:{product.price}</h3> */}
-        <h3>total Price:{quantity*product.price}</h3>
+        <h3>total Price:{(quantity*product.price).toLocaleString()}</h3>
         <button onClick={()=>AddProduct(product)}>+</button>
             {quantity}
         <button onClick={()=>RemoveProduct(product)} >-</button>
