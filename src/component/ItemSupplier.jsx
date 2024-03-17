@@ -24,7 +24,7 @@ const ItemSupplier = ({product,OnEdit})=>{
 
     return(
       <div className="itemSupplier-container">
-        <img src={BACKEND_URL+"/"+product.img} alt="" width="150px" height="100px" />
+        <img src={BACKEND_URL+"/"+product.img} alt=""  width="150px" height="100px" />
         {/* {console.log(BACKEND_URL+product.img)} */}
         <h1>{product.name}</h1>
         <h1>Price:{(product.price).toLocaleString()}</h1>

@@ -12,7 +12,7 @@ const RegisterPage = ()=>{
         <div>
             {isCustomer?<RegisterForm/>:<SupplierRegisterForm/>}
             <div className="form__togle--register">
-            <ButtonHover background="salmon" onClick={OnToggle} text="Toggle"/>
+            <ButtonHover background="salmon" onClick={OnToggle} text={isCustomer?"Supplier":"Customer"}/>
             </div>
         </div>
 

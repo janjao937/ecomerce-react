@@ -16,7 +16,7 @@ const AuthContextProvider = ({children})=>{
         myAxios.get("/auth/user").then(res=>{
             console.log(res.data.user)
             setAuthUser(res.data.user);
-        });
+        }).catch(error=>console.log(error));
     
         }
        
