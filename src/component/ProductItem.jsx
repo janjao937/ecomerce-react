@@ -19,13 +19,13 @@ const ProductItem = ({productItem}) =>{
     }
 
     return(
-        <div className="prooductItem">
+        <div className="productItem">
             {/* {productItem.id} */}
             <div style={{width:"100%",display:"flex"}}>
             <img  style={{margin:"auto"}} src={`${BACKEND_URL}/${productItem.img}`}  width="300px" height="250px"  alt="" />
             </div>
            
-            <div className="prooductItem-text">
+            <div className="productItem-text">
                 
                  <h1>Name:{productItem.name}</h1>
                  {/* {console.log(productItem)} */}
