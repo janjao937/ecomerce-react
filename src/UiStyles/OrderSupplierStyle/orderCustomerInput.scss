@@ -1,0 +1,19 @@
+.order-input__element{
+    
+    &--xl{
+        width: 40rem;
+    }
+    &--sm{
+        // padding: 1em;
+    }
+}
+
+.order-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap:1rem
+
+}

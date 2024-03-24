@@ -2,20 +2,26 @@ import { useState } from "react";
 import { BACKEND_URL } from "../config/env";
 import ButtonHover from "./ButtonHover";
 import myAxios from "../config/myAxios";
+import "../UiStyles/OrderSupplierStyle/orderCustomerInput.scss";
 
 //product.product.isOrderStatus ใช้อันนี้แยก order ก่อน
 
 const OrderCustomerFrom = ({ product }) => {
-  const [address, setAdress] = useState("");
+  const [address, setAdress] = useState({address1:"",address2:"",city:"",postalCode:"",country:""});
+
+  // const [address, setAdress] = useState("");
   const [file,setFile] = useState(null);
 
   const OnSubmitForm = async(e) => {
     // e.preventDefault();
 
     //myaxios create order 
+      const addressData = address.address1+" "+address.address2+" "+address.city+" "+address.postalCode+" "+address.country;
+
       const formData = new FormData();
       formData.append("image",file);
-      formData.append("adress",JSON.stringify(address));
+
+      formData.append("adress",JSON.stringify(addressData));
       formData.append("cartId",JSON.stringify(product.cartId));
       
       await myAxios.post("/order/create",formData);
@@ -25,7 +31,7 @@ const OrderCustomerFrom = ({ product }) => {
     // console.log("adress:", address);
     // console.log("cartId:",product.cartId);
 
-    setAdress("");//reset adress
+    setAdress({address1:"",address2:"",city:"",postalCode:"",country:""});//reset adress
   };
 
   return (
@@ -61,17 +67,23 @@ const OrderCustomerFrom = ({ product }) => {
           />
           <br />
         </div>
-        <h2>Adress:</h2>
+        <h2>Adress</h2>
 
-        <textarea
+        {/* <textarea
           onChange={(e) => setAdress(e.target.value)}
           value={address}
           name="adress"
           id=""
           cols="30"
           rows="5"
-        ></textarea>
-
+        ></textarea> */}
+        <div className="order-container">
+        <input className="order-input__element--xl" value={address.address1} onChange={e=>setAdress({...address,address1:e.target.value})}  placeholder="Address1"/>
+        <input className="order-input__element--xl" value={address.address2} onChange={e=>setAdress({...address,address2:e.target.value})}  placeholder="Address2"/>
+        <input className="order-input__element--sm" value={address.city} onChange={e=>setAdress({...address,city:e.target.value})}  placeholder="City"/>
+        <input className="order-input__element--sm" value={address.postalCode} onChange={e=>setAdress({...address,postalCode:e.target.value})}  placeholder="Postal/Zip Code"/>
+        <input className="order-input__element--sm" value={address.country} onChange={e=>setAdress({...address,country:e.target.value})}  placeholder="Country"/> 
+        </div>
         <div style={{display:"flex", flexDirection:"column"}}>
         <h2>QR Payment</h2>
           <img
