@@ -1,3 +1,5 @@
+@import "../App.scss";
+
 .icon{
     text-align: center;
     transition: transform 1.1s linear;
@@ -5,4 +7,56 @@
 
 .icon:hover{
     transform: rotate(360deg);
+}
+.bar{
+    position: sticky;
+    top: 0;
+    background-color:$bar-bar-color;
+    width: 100%;
+    height: 10vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    .bar-container{
+        display: flex;
+        gap: 20px;
+        padding-top: 25px;
+        align-items: center;
+        justify-content: end;
+        width: 210px;
+    }
+    .bar-container-L{
+        display: flex;
+        gap: 20px;
+        padding-top: 25px;
+        align-items: center;
+        justify-content: start;
+        width: 210px;
+        
+    }
+    // .bar-container-R{
+    //     display: flex;
+    //     gap: 20px;
+    //     padding-top: 25px;
+    //     align-items: center;
+    //     justify-content: start;
+    //     width: 210px;
+        
+    // }
+
+    .bar-item{
+        display: flex;
+        gap: 20px;
+        height: 1.5rem;
+        justify-content: center;
+        align-items: center;
+
+        p{
+            cursor: pointer;
+        }
+        span{
+            cursor: pointer;
+        }
+    }
 }
