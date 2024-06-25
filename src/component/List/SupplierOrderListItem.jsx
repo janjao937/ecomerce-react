@@ -23,8 +23,9 @@ const SupplierOrderListItem = ({headerData,data}) =>{
         {data&&data?.map((e,index)=>{
 
             return e.isOrderStatus!==0&&(
-
+        
             <div key={index}>
+              
                 {index==0&&(<div>
                     <h2>Product name:{headerData.name}</h2>
                     <img src={BACKEND_URL+"/"+headerData.img} alt={headerData.name+"img"} height="300rem" width="400rem"/>
@@ -42,7 +43,9 @@ const SupplierOrderListItem = ({headerData,data}) =>{
                    <div key={index}>
                         <br/>
                         <h3>Adress:{data.adress}</h3>
+                        <img src={BACKEND_URL+"/"+data.customerSlipImg} alt="slip" height="300rem" width="300rem"/>
                         {/* <h3>DeliveryStatus:{data.deliveryStatus}</h3> */}
+                        {/* {console.log(data.customerSlipImg)} */}
                         {
                             data.deliveryStatus==0?<ButtonHover type="submit" onClick={()=>OnDelivery(data.id)} text="Delivery" background="green"  width="200px"/>:
                             (data.deliveryStatus==2)?<button onClick={(e)=>OnSuccessOrder(e,data.id)}>Success</button>:

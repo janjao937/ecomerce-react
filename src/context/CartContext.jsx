@@ -82,13 +82,13 @@ const CartContextProvider = ({children})=>{
 
     const IncreseAmout = async (product)=>{
         console.log(product);
-        const res = await myAxios.post("/cart/add-item",{
+        const res = await myAxios.patch("/cart/add",{
             productId:product.id,
+            quantity:++product.quantity
         });
         console.log(res);
     }
     const DecreseAmout = async (product)=>{
-        console.log(product);
         const res = await myAxios.patch("/cart/remove",{
             productId:product.id,
         });
@@ -110,7 +110,7 @@ const CartContextProvider = ({children})=>{
         if(productExist){
             setCartItems(cartItems.map((item)=>item.id === product.id?{...productExist,quantity:productExist.quantity+1}:item));
             //patch
-           const  res = await IncreseAmout(product);
+           const  res = await IncreseAmout(productExist);
             //set timeout
             return res;
         }

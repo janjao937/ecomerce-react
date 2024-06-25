@@ -7,7 +7,7 @@ const OrderSupplierComponent = ({data})=>{
     return(
         <div>
             {/* OrderSupplier */}
-            {console.log(data)}
+            {/* {console.log(data[0].cart[0].order[0].customerSlipImg)} */}
             {data&&data?.map((e,index)=>{
                 
                 return(<div key={index} >
